@@ -7,6 +7,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {GameOverScreen} from "./screens/GameOverScreen";
 import {useFonts} from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import {StatusBar} from "expo-status-bar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -56,21 +57,25 @@ export default function App() {
     }
 
     if (isGameOver && computedNumber) {
-        screen = <GameOverScreen userNumber={computedNumber} roundsNumber={roundsNumber} onStartNewGame={onStartNewGame}/>
+        screen =
+            <GameOverScreen userNumber={computedNumber} roundsNumber={roundsNumber} onStartNewGame={onStartNewGame}/>
     }
 
     return (
-        <LinearGradient
-            style={styles.container}
-            colors={["#3a393a", "#d6d6d6"]}>
-            <ImageBackground
-                source={require('./assets/background.png')}
-                resizeMode="cover"
+        <>
+            <StatusBar style="light"/>
+            <LinearGradient
                 style={styles.container}
-                imageStyle={styles.backgroundImage}>
-                <SafeAreaProvider style={{flex: 1}}>{screen}</SafeAreaProvider>
-            </ImageBackground>
-        </LinearGradient>
+                colors={["#3a393a", "#d6d6d6"]}>
+                <ImageBackground
+                    source={require('./assets/background.png')}
+                    resizeMode="cover"
+                    style={styles.container}
+                    imageStyle={styles.backgroundImage}>
+                    <SafeAreaProvider style={{flex: 1}}>{screen}</SafeAreaProvider>
+                </ImageBackground>
+            </LinearGradient>
+        </>
     );
 }
 

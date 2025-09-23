@@ -9,11 +9,12 @@ export function Title({children}) {
 }
 
 const styles = StyleSheet.create({
-    title:{
-        fontSize:36,
-        fontFamily:'open-sans-bold',
-        color:'white',
-        textAlign:'center',
-        padding:12,
+    title: {
+        fontSize: 29,
+        fontFamily: 'open-sans-bold',
+        color: 'white',
+        textAlign: 'center',
+        padding: 12,
+        maxWidth: '80%'
     }
 })

@@ -1,4 +1,4 @@
-import {TextInput, View, StyleSheet, Alert, Text} from "react-native";
+import {TextInput, View, StyleSheet, Alert, Text, KeyboardAvoidingView} from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import {useState} from "react";
 import Colors from "../constants/colors";
@@ -36,27 +36,29 @@ export default function StartGameScreen({onPickedNumber}) {
 
     return (
         <SafeAreaProvider style={styles.root}>
-            <Title>Guess My Number</Title>
-            <Card>
-                <InstructionText>Enter a Number</InstructionText>
-                <TextInput style={styles.textInput}
-                           cursorColor={Colors.accent500}
-                           textAlign={"center"}
-                           maxLength={2}
-                           keyboardType={"numeric"}
-                           autoCapitalize="none"
-                           onChangeText={handleNumberInput}
-                           value={enteredNumber}
-                />
-                <View style={styles.buttonsContainer}>
-                    <View style={styles.buttonContainer}>
-                        <PrimaryButton position={1} onPress={handleSubmit}>Confirm</PrimaryButton>
+            {/*<KeyboardAvoidingView behavior="height">*/}
+                <Title>Guess My Number</Title>
+                <Card>
+                    <InstructionText>Enter a Number</InstructionText>
+                    <TextInput style={styles.textInput}
+                               cursorColor={Colors.accent500}
+                               textAlign={"center"}
+                               maxLength={2}
+                               keyboardType={"numeric"}
+                               autoCapitalize="none"
+                               onChangeText={handleNumberInput}
+                               value={enteredNumber}
+                    />
+                    <View style={styles.buttonsContainer}>
+                        <View style={styles.buttonContainer}>
+                            <PrimaryButton position={1} onPress={handleSubmit}>Confirm</PrimaryButton>
+                        </View>
+                        <View style={styles.buttonContainer}>
+                            <PrimaryButton position={2} onPress={handleReset}>Reset</PrimaryButton>
+                        </View>
                     </View>
-                    <View style={styles.buttonContainer}>
-                        <PrimaryButton position={2} onPress={handleReset}>Reset</PrimaryButton>
-                    </View>
-                </View>
-            </Card>
+                </Card>
+            {/*</KeyboardAvoidingView>*/}
         </SafeAreaProvider>
     )
 }
